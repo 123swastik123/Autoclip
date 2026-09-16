@@ -1,8 +1,9 @@
 """9:16 editing: prep -> reframe (face-follow) -> punch-ins -> karaoke captions ->
-countdown cards / title / SFX -> final assembly -> loudness normalize."""
+countdown cards / title / SFX / BGM (ducked) -> final assembly -> loudness normalize."""
 import os, subprocess
 from . import config, mediatools as mt
 from . import captions as capgen
+from . import music as musicgen
 
 def _p(t):  # project media path
     return os.path.join(config.media_dir(), t)
@@ -198,8 +199,11 @@ def make_title(bg_src, hook, out_id="title_raw"):
     return out
 
 # ---------------- assembly ----------------
-def assemble(clip_paths, out_file, hook, whoosh_at=None):
-    """Demuxer concat (copy), then timebase-normalizing re-encode + loudnorm + optional whoosh."""
+def assemble(clip_paths, out_file, hook, whoosh_at=None, music_profile=None):
+    """Concat + timebase-normalize + BGM (sidechain-ducked under dialogue) + loudnorm.
+
+    music_profile: music_trend block from research. If disabled, no music added.
+    """
     lst = _p("concat_list.txt")
     with open(lst, "w", encoding="utf-8") as f:
         for p in clip_paths:
@@ -211,15 +215,39 @@ def assemble(clip_paths, out_file, hook, whoosh_at=None):
             "-i", lst, "-c", "copy", merged])
     who, _boom = make_sfx()
     inputs = ["-i", merged]
-    flt = "[0:a]loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000[aout]"
-    if whoosh_at:
-        inputs += ["-i", who]
-        delay = int(max(0, whoosh_at) * 1000)
-        flt = (f"[1:a]adelay={delay}|{delay},volume=0.5[w];"
-               "[0:a][w]amix=inputs=2:duration=first:normalize=0,"
-               "loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000[aout]")
+
+    if music_profile and music_profile.get("enabled", True):
+        bgm = musicgen.make_bgm(music_profile)
+        if os.path.exists(bgm):
+            inputs += ["-i", bgm]
+            vol = float(music_profile.get("bed_volume", 0.42))
+            dck_t = float(music_profile.get("duck_threshold", 0.06))
+            dck_r = float(music_profile.get("duck_ratio", 10.0))
+            fade_in = music_profile.get("fade_in_ms", 300)
+            fade_out = music_profile.get("fade_out_ms", 600)
+            # sidechaincompress: music is ducked while dialogue is loud
+            chain = (f"[1:a]volume={vol}[mus];"
+                     f"[mus][0:a]sidechaincompress=threshold={dck_t}:ratio={dck_r}:"
+                     f"attack=40:release=300[duck];"
+                     f"[duck]afade=t=in:st=0:d={fade_in/1000:.2f},afade=t=out:st=4:d={fade_out/1000:.2f}[musf];"
+                     f"[0:a][musf]amix=inputs=2:duration=first:normalize=0,"
+                     f"loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000[aout]")
+            inputs += ["-filter_complex", chain]
+        else:
+            flt = "[0:a]loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000[aout]"
+            inputs += ["-filter_complex", flt]
+    else:
+        flt = "[0:a]loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000[aout]"
+        if whoosh_at:
+            inputs += ["-i", who]
+            delay = int(max(0, whoosh_at) * 1000)
+            flt = (f"[1:a]adelay={delay}|{delay},volume=0.5[w];"
+                   "[0:a][w]amix=inputs=2:duration=first:normalize=0,"
+                   "loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000[aout]")
+        inputs += ["-filter_complex", flt]
+
     mt.run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error"] + inputs +
-           ["-filter_complex", flt, "-map", "0:v", "-map", "[aout]",
+           ["-map", "0:v", "-map", "[aout]",
             "-vf", "fps=30,settb=AVTB,format=yuv420p",
             "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-pix_fmt", "yuv420p",
             "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-movflags", "+faststart", out_file])

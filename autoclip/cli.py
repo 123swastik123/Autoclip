@@ -47,11 +47,13 @@ def cmd_transcribe(args):
 
 def cmd_creative_qa(args):
     from . import mediatools as mt, candidates as cand
-    from . import config
+    from . import config, qa as qa_mod
     import os, datetime
     with open(args.manifest, "r", encoding="utf-8") as f:
         manifest = json.load(f)
+    fmt = format_mod.build_directives(manifest["request"])
     clips = []
+    seq_ordered = []
     for p in manifest["plans"]:
         r = p.get("editorial_rank") or p.get("rank")
         vid = os.path.join(config.media_dir(), f"M{r}_capped.mp4" if r is not None else f"{p['id']}_capped.mp4")
@@ -62,16 +64,48 @@ def cmd_creative_qa(args):
         dur = (words[-1]["end"] - words[0]["start"]) if words else 0
         gaps = [words[i + 1]["start"] - words[i]["end"] for i in range(len(words) - 1)]
         maxg = round(max(gaps), 2) if gaps else 0.0
-        score, subs = cand.score_candidate(p)
+        score, subs, topics = cand.score_candidate(p, fmt["weights"])
         clips.append({"id": p["id"], "dur": round(p["t1"] - p["t0"], 2), "face_hits": round(hits, 2),
                       "words": len(words), "max_pause": maxg, "speech": round(dur, 1),
-                      "score": score, "subscores": subs})
+                      "score": score, "subscores": subs, "punch": bool(p.get("punch")),
+                      "topics": list(topics)})
+        p["score"], p["subscores"], p["topics"] = score, subs, list(topics)
+        seq_ordered.append(p)
         print(f"{p['id']:4s} face_hits={hits*100:3.0f}% area={area*100:3.0f}%  max_gap={maxg:.2f}s  "
               f"words={len(words):3d}  score={score}")
-    res = qa_mod.creative_qa(clips)
+        # caption meta check
+        cap_file = os.path.join(config.media_dir(), f"M{r}_cap.json" if r is not None else f"{p['id']}_cap.json")
+        if not os.path.exists(cap_file):
+            cap_file = os.path.join(config.media_dir(), f"{p['id']}_cap.json")
+
+    # order plans #5..#1 for sequence assessment
+    seq_ordered.sort(key=lambda p: -(p.get("editorial_rank") or p.get("rank") or 0))
+    seq_score, seq_subs = cand.score_sequence(seq_ordered, fmt.get("sequence_weights"))
+    for q in seq_ordered:
+        q["sequence_score"] = seq_score
+        q["sequence_subscores"] = seq_subs
+    seq_res = qa_mod.sequence_qa(seq_ordered, seq_floor=fmt["quality_floor"].get("min_sequence_score", 0.55))
+    print("SEQUENCE:", "PASS" if not seq_res["issues"] else "FAIL",
+          json.dumps(seq_res["metrics"]))
+    for i in seq_res["issues"]:
+        print("  ISSUE:", i)
+    for n in seq_res["notes"]:
+        print("  note:", n)
+
+    caption_metas = []
+    for p in clips:
+        r = next((q for q in seq_ordered if q["id"] == p["id"]), p)
+        cap_file = os.path.join(config.media_dir(), f"M{r.get('editorial_rank') or r.get('rank')}_cap.json")
+        if os.path.exists(cap_file):
+            try:
+                caption_metas.append(json.load(open(cap_file, encoding="utf-8")))
+            except Exception:
+                pass
+
+    res = qa_mod.creative_qa(clips, sequence=seq_ordered, caption_metas=caption_metas)
     os.makedirs(os.path.join("data", "state"), exist_ok=True)
     with open(os.path.join("data", "state", "qa_creative.json"), "w", encoding="utf-8") as f:
-        json.dump({"clips": clips, "creative": res,
+        json.dump({"clips": clips, "creative": res, "sequence": seq_res,
                    "ts": datetime.datetime.now().isoformat(timespec="seconds")}, f, indent=1)
     print("CREATIVE QA:", "PASS" if res["ok"] else "FAIL")
     for i in res["issues"]:
@@ -86,12 +120,22 @@ def cmd_run(args):
     req = manifest["request"]
     fmt = format_mod.build_directives(req)
     ranked = candidates_mod.rank_moments(manifest["plans"], fmt["weights"])
-    sel = candidates_mod.assign_countdown(ranked, fmt["countdown"]["n"])
+    sel = candidates_mod.assign_countdown(ranked, fmt["countdown"]["n"],
+                                          seq_weights=fmt.get("sequence_weights"))
     print(f"Selected {len(sel)} moments ordered #5.. #1")
     for p in sel:
         print(f"  M{p.get('id')} rank#{p['rank']} score={p['score']} src={p.get('src')}")
+    if sel:
+        seq_score, seq_subs = candidates_mod.score_sequence(sel, fmt.get("sequence_weights"))
+        for p in sel:
+            p["sequence_score"] = seq_score
+            p["sequence_subscores"] = seq_subs
+        print(f"  sequence_score={seq_score:.3f} "
+              f"escalation={seq_subs.get('escalation')} topic_conn={seq_subs.get('topic_connection')} "
+              f"reaction_esc={seq_subs.get('reaction_escalation')} payoff_climax={seq_subs.get('payoff_climax')}")
 
     from . import edit as edit_mod
+    import datetime
     nc = fmt["countdown"]
     out_dir = os.path.dirname(os.path.abspath(args.out)) or ""
     os.makedirs(out_dir, exist_ok=True)
@@ -104,13 +148,21 @@ def cmd_run(args):
     for p in sel:
         card, clip = built[p["id"]]
         clips.append(card); clips.append(clip)
-    edit_mod.assemble(clips, args.out, hook, whoosh_at=hook["title_seconds"])
+    edit_mod.assemble(clips, args.out, hook, whoosh_at=None, music_profile=fmt.get("music"))
     print("rendered", args.out)
 
     tec = qa_mod.tech_qa(args.out)
     print("TECHNICAL QA:", "PASS" if tec["ok"] else "FAIL", json.dumps(tec.get("found", {}).get("duration")) if tec.get("found") else "")
     for e in tec["errors"]:
         print("  -", e)
+
+    # creative QA (incl. sequence + captions) persisted automatically
+    import subprocess
+    r = subprocess.run([sys.executable, "-m", "autoclip.cli", "creative-qa", args.manifest],
+                       capture_output=True, text=True)
+    print(r.stdout)
+    if r.returncode != 0:
+        print(r.stderr[-1500:])
 
 def _build_one(p, fmt, i):
     """Render one moment: prep -> reframe -> punch -> karaoke -> return (card, clip)."""

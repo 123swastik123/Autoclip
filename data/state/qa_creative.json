@@ -3,7 +3,7 @@
   {
    "id": "M1",
    "dur": 7.75,
-   "face_hits": 0.55,
+   "face_hits": 0.6,
    "words": 19,
    "max_pause": 0.78,
    "speech": 7.8,
@@ -16,7 +16,11 @@
     "payoff": 0.0,
     "standalone": 1.0,
     "viral_signal": 0.0
-   }
+   },
+   "punch": false,
+   "topics": [
+    "reaction"
+   ]
   },
   {
    "id": "M2",
@@ -34,7 +38,11 @@
     "payoff": 0.005,
     "standalone": 1.0,
     "viral_signal": 0.0
-   }
+   },
+   "punch": false,
+   "topics": [
+    "fan_interaction"
+   ]
   },
   {
    "id": "M3",
@@ -52,7 +60,11 @@
     "payoff": 0.06,
     "standalone": 1.0,
     "viral_signal": 0.0
-   }
+   },
+   "punch": false,
+   "topics": [
+    "chaos"
+   ]
   },
   {
    "id": "M4",
@@ -70,7 +82,12 @@
     "payoff": 0.314,
     "standalone": 1.0,
     "viral_signal": 0.0
-   }
+   },
+   "punch": false,
+   "topics": [
+    "reaction",
+    "chaos"
+   ]
   },
   {
    "id": "M5",
@@ -88,19 +105,49 @@
     "payoff": 0.0,
     "standalone": 1.0,
     "viral_signal": 0.0
-   }
+   },
+   "punch": false,
+   "topics": [
+    "fan_interaction",
+    "reaction"
+   ]
   }
  ],
  "creative": {
   "ok": true,
   "issues": [],
   "notes": [
-   "M2: very few words, may not land caption-forward"
+   "M2: very few words, may not land caption-forward",
+   "emphasis 5/7 - genuinely over-animated",
+   "emphasis 7/9 - genuinely over-animated"
   ],
   "metrics": {
    "total": 37.2,
-   "speech_density": 0.73
+   "speech_density": 0.73,
+   "sequence_score": 0.615,
+   "escalation": 0.875,
+   "topic_connection": 0.21,
+   "reaction_escalation": 0.625,
+   "energy_escalation": 0.5,
+   "payoff_climax": 1.0
   }
  },
- "ts": "2026-09-16T13:32:43"
+ "sequence": {
+  "ok": true,
+  "issues": [],
+  "notes": [],
+  "metrics": {
+   "sequence_score": 0.615,
+   "escalation": 0.875,
+   "topic_connection": 0.21,
+   "reaction_escalation": 0.625,
+   "energy_escalation": 0.5,
+   "payoff_climax": 1.0
+  },
+  "hits": [
+   "sequence cohesion checks"
+  ],
+  "miss": []
+ },
+ "ts": "2026-09-16T14:10:11"
 }

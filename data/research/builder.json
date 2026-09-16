@@ -11,7 +11,11 @@
   "words_per_line": 5,
   "emphasis_color": "FFD200",
   "pop_ms": 130,
-  "uppercase": true
+  "uppercase": true,
+  "animation": "word_pop",
+  "highlight_style": "bold_scale",
+  "emphasis_words": [],
+  "safe_zone_margin": 0.15
  },
  "edit_trend": {
   "max_silence_before_cut": 0.5,
@@ -26,7 +30,24 @@
   "sfx": [
    "whoosh",
    "boom"
-  ]
+  ],
+  "transition_style": "hard_cut",
+  "pacing": "energetic"
+ },
+ "music_trend": {
+  "enabled": true,
+  "style": "phonk",
+  "volume_duck_db": -11,
+  "fade_in_ms": 250,
+  "fade_out_ms": 900,
+  "use_trending": false,
+  "copyright_safe": true,
+  "match_creator": true,
+  "track_per_moment": false,
+  "build_ups": true,
+  "bed_volume": 0.3,
+  "duck_threshold": 0.055,
+  "duck_ratio": 9.0
  },
  "countdown_trend": {
   "n": 5,
@@ -44,6 +65,17 @@
    "Editing trend: silence removal, tight cuts, punch-ins on reaction peaks, 20-45s runtime, whoosh/boom transitions.",
    "Countdown format: hook with future payoff, animated numbering, weakest first, strongest saved for #1; resepect the time contract.",
    "IShowSpeed viral signal: Ronaldo/World Cup fanaticism (meeting Ronaldo, hotels, airports, meltdowns) + high-energy IRL chaos (e.g. Puerto Rico punch-fan clip May 2026). Portrait 9:16 native content outperforms re-crops."
-  ]
+  ],
+  "typical_music": [],
+  "common_topics": []
+ },
+ "sequence_trend": {
+  "require_escalation": true,
+  "topic_threads": true,
+  "reaction_escalation": true,
+  "context_bridges": true,
+  "max_gap_between": 2.0,
+  "moment_scripting": "open with small wins or hook, escalate stakes/reactions, land a payoff that feels earned",
+  "escalation_kind": "reaction_energy"
  }
 }

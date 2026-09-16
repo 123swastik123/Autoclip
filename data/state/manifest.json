@@ -1,0 +1,627 @@
+{
+ "request": {
+  "raw": "IShowSpeed - Top 5 funniest moments",
+  "creator": "IShowSpeed",
+  "format": "countdown",
+  "count": 5,
+  "topic": "funniest moments",
+  "summary": "countdown/5 about funniest moments by IShowSpeed"
+ },
+ "plans": [
+  {
+   "id": "M1",
+   "src": "last",
+   "src_path": "C:\\Users\\swastik\\AppData\\Local\\Temp\\opencode\\autoclip\\Last.mp4",
+   "emphasis": [
+    "DIE",
+    "NOW",
+    "BRO",
+    "LOVE"
+   ],
+   "words": [
+    {
+     "start": 0.01,
+     "end": 0.27,
+     "text": " can't",
+     "energy": 0.794
+    },
+    {
+     "start": 0.27,
+     "end": 0.39,
+     "text": " die",
+     "energy": 0.893
+    },
+    {
+     "start": 0.39,
+     "end": 0.67,
+     "text": " now",
+     "energy": 0.781
+    },
+    {
+     "start": 0.67,
+     "end": 0.93,
+     "text": " bro.",
+     "energy": 0.794
+    },
+    {
+     "start": 1.25,
+     "end": 1.83,
+     "text": " I",
+     "energy": 0.633
+    },
+    {
+     "start": 1.83,
+     "end": 1.97,
+     "text": " can",
+     "energy": 0.877
+    },
+    {
+     "start": 1.97,
+     "end": 2.15,
+     "text": " die",
+     "energy": 0.847
+    },
+    {
+     "start": 2.15,
+     "end": 2.51,
+     "text": " now",
+     "energy": 0.735
+    },
+    {
+     "start": 2.51,
+     "end": 2.75,
+     "text": " bro.",
+     "energy": 0.806
+    },
+    {
+     "start": 2.99,
+     "end": 3.45,
+     "text": " What's",
+     "energy": 0.685
+    },
+    {
+     "start": 3.45,
+     "end": 3.57,
+     "text": " the",
+     "energy": 0.893
+    },
+    {
+     "start": 3.57,
+     "end": 3.77,
+     "text": " word",
+     "energy": 0.833
+    },
+    {
+     "start": 3.77,
+     "end": 4.09,
+     "text": " bro?",
+     "energy": 0.758
+    },
+    {
+     "start": 4.73,
+     "end": 5.31,
+     "text": " King",
+     "energy": 0.633
+    },
+    {
+     "start": 5.31,
+     "end": 5.67,
+     "text": " day",
+     "energy": 0.735
+    },
+    {
+     "start": 5.67,
+     "end": 6.09,
+     "text": " man.",
+     "energy": 0.704
+    },
+    {
+     "start": 6.87,
+     "end": 7.45,
+     "text": " Don't",
+     "energy": 0.633
+    },
+    {
+     "start": 7.45,
+     "end": 7.55,
+     "text": " you",
+     "energy": 0.909
+    },
+    {
+     "start": 7.55,
+     "end": 7.83,
+     "text": " see?",
+     "energy": 0.781
+    }
+   ],
+   "kind": "portrait",
+   "t0": 295.8,
+   "t1": 303.55,
+   "editorial_rank": 1
+  },
+  {
+   "id": "M2",
+   "src": "last",
+   "src_path": "C:\\Users\\swastik\\AppData\\Local\\Temp\\opencode\\autoclip\\Last.mp4",
+   "emphasis": [
+    "LOVE",
+    "YOU",
+    "RENATA",
+    "REALLY"
+   ],
+   "words": [
+    {
+     "start": 0.05,
+     "end": 0.43,
+     "text": " I",
+     "energy": 0.725
+    },
+    {
+     "start": 0.43,
+     "end": 0.65,
+     "text": " love",
+     "energy": 0.82
+    },
+    {
+     "start": 0.65,
+     "end": 0.77,
+     "text": " you",
+     "energy": 0.893
+    },
+    {
+     "start": 0.77,
+     "end": 1.07,
+     "text": " Renata,",
+     "energy": 0.769
+    },
+    {
+     "start": 1.23,
+     "end": 1.39,
+     "text": " really",
+     "energy": 0.862
+    },
+    {
+     "start": 1.39,
+     "end": 1.69,
+     "text": " love",
+     "energy": 0.769
+    },
+    {
+     "start": 1.69,
+     "end": 1.85,
+     "text": " you.",
+     "energy": 0.862
+    }
+   ],
+   "kind": "portrait",
+   "t0": 85.5,
+   "t1": 90.5,
+   "editorial_rank": 5
+  },
+  {
+   "id": "M3",
+   "src": "india",
+   "src_path": "C:\\Users\\swastik\\AppData\\Local\\Temp\\opencode\\autoclip\\WkMr5zNqgwM_m1.mp4",
+   "emphasis": [
+    "INDIA",
+    "F*CK",
+    "GO",
+    "BEAT",
+    "BRO"
+   ],
+   "words": [
+    {
+     "start": 0.12,
+     "end": 0.34,
+     "text": " this",
+     "energy": 0.82
+    },
+    {
+     "start": 0.34,
+     "end": 0.5,
+     "text": " one",
+     "energy": 0.862
+    },
+    {
+     "start": 0.5,
+     "end": 0.68,
+     "text": " right",
+     "energy": 0.847
+    },
+    {
+     "start": 0.68,
+     "end": 1.12,
+     "text": " is",
+     "energy": 0.694
+    },
+    {
+     "start": 1.12,
+     "end": 1.36,
+     "text": " oh,",
+     "energy": 0.806
+    },
+    {
+     "start": 1.36,
+     "end": 1.66,
+     "text": " yeah,",
+     "energy": 0.769
+    },
+    {
+     "start": 1.88,
+     "end": 1.9,
+     "text": " yeah,",
+     "energy": 0.98
+    },
+    {
+     "start": 2.14,
+     "end": 2.18,
+     "text": " oh",
+     "energy": 0.962
+    },
+    {
+     "start": 2.18,
+     "end": 2.52,
+     "text": " my",
+     "energy": 0.746
+    },
+    {
+     "start": 2.52,
+     "end": 2.94,
+     "text": " fucking",
+     "energy": 0.704
+    },
+    {
+     "start": 2.94,
+     "end": 3.14,
+     "text": " god",
+     "energy": 0.833
+    },
+    {
+     "start": 3.8,
+     "end": 4.24,
+     "text": " Oh",
+     "energy": 0.694
+    },
+    {
+     "start": 4.24,
+     "end": 4.44,
+     "text": " my",
+     "energy": 0.833
+    },
+    {
+     "start": 4.44,
+     "end": 4.7,
+     "text": " god,",
+     "energy": 0.794
+    },
+    {
+     "start": 4.86,
+     "end": 5.1,
+     "text": " let's",
+     "energy": 0.806
+    },
+    {
+     "start": 5.1,
+     "end": 5.2,
+     "text": " see",
+     "energy": 0.909
+    },
+    {
+     "start": 5.2,
+     "end": 5.28,
+     "text": " it",
+     "energy": 0.926
+    },
+    {
+     "start": 5.28,
+     "end": 5.42,
+     "text": " again.",
+     "energy": 0.877
+    },
+    {
+     "start": 5.52,
+     "end": 5.66,
+     "text": " Let's",
+     "energy": 0.877
+    },
+    {
+     "start": 5.66,
+     "end": 5.78,
+     "text": " see",
+     "energy": 0.893
+    },
+    {
+     "start": 5.78,
+     "end": 5.84,
+     "text": " it",
+     "energy": 0.943
+    },
+    {
+     "start": 5.84,
+     "end": 6.08,
+     "text": " again.",
+     "energy": 0.806
+    },
+    {
+     "start": 6.5,
+     "end": 6.94,
+     "text": " Wait.",
+     "energy": 0.694
+    },
+    {
+     "start": 7.08,
+     "end": 7.52,
+     "text": " Oh",
+     "energy": 0.694
+    }
+   ],
+   "kind": "landscape",
+   "t0": 4.0,
+   "t1": 13.0,
+   "editorial_rank": 4
+  },
+  {
+   "id": "M4",
+   "src": "last",
+   "src_path": "C:\\Users\\swastik\\AppData\\Local\\Temp\\opencode\\autoclip\\Last.mp4",
+   "emphasis": [
+    "NOBODY",
+    "CAN",
+    "TELL",
+    "ME",
+    "NOTHING",
+    "BRO",
+    "GET",
+    "COO",
+    "THEY",
+    "RAFAEL",
+    "LEO",
+    "LOVE"
+   ],
+   "words": [
+    {
+     "start": 0.35,
+     "end": 0.75,
+     "text": " Nobody",
+     "energy": 0.714
+    },
+    {
+     "start": 0.75,
+     "end": 0.87,
+     "text": " can",
+     "energy": 0.893
+    },
+    {
+     "start": 0.87,
+     "end": 1.61,
+     "text": " tell",
+     "energy": 0.575
+    },
+    {
+     "start": 1.61,
+     "end": 3.65,
+     "text": " me",
+     "energy": 0.329
+    },
+    {
+     "start": 3.65,
+     "end": 3.81,
+     "text": " nothing",
+     "energy": 0.862
+    },
+    {
+     "start": 3.81,
+     "end": 4.33,
+     "text": " I",
+     "energy": 0.658
+    },
+    {
+     "start": 4.33,
+     "end": 5.49,
+     "text": " can't",
+     "energy": 0.463
+    },
+    {
+     "start": 5.49,
+     "end": 5.57,
+     "text": " I",
+     "energy": 0.926
+    },
+    {
+     "start": 5.57,
+     "end": 5.67,
+     "text": " don't",
+     "energy": 0.909
+    },
+    {
+     "start": 5.67,
+     "end": 5.81,
+     "text": " get",
+     "energy": 0.877
+    },
+    {
+     "start": 5.81,
+     "end": 5.91,
+     "text": " on",
+     "energy": 0.909
+    },
+    {
+     "start": 5.91,
+     "end": 6.11,
+     "text": " coo",
+     "energy": 0.833
+    },
+    {
+     "start": 6.11,
+     "end": 6.39,
+     "text": " nobody",
+     "energy": 0.781
+    },
+    {
+     "start": 6.39,
+     "end": 6.71,
+     "text": " said",
+     "energy": 0.758
+    },
+    {
+     "start": 6.71,
+     "end": 7.89,
+     "text": " nobody's",
+     "energy": 0.459
+    },
+    {
+     "start": 7.89,
+     "end": 8.03,
+     "text": " not",
+     "energy": 0.877
+    },
+    {
+     "start": 8.03,
+     "end": 8.15,
+     "text": " gonna",
+     "energy": 0.893
+    },
+    {
+     "start": 8.15,
+     "end": 8.29,
+     "text": " do",
+     "energy": 0.877
+    },
+    {
+     "start": 8.29,
+     "end": 8.39,
+     "text": " that.",
+     "energy": 0.909
+    },
+    {
+     "start": 8.49,
+     "end": 8.61,
+     "text": " Yo,",
+     "energy": 0.893
+    },
+    {
+     "start": 8.71,
+     "end": 8.81,
+     "text": " think",
+     "energy": 0.909
+    },
+    {
+     "start": 8.81,
+     "end": 8.97,
+     "text": " me",
+     "energy": 0.862
+    },
+    {
+     "start": 8.97,
+     "end": 9.15,
+     "text": " out,",
+     "energy": 0.847
+    },
+    {
+     "start": 9.27,
+     "end": 9.35,
+     "text": " bro",
+     "energy": 0.926
+    },
+    {
+     "start": 9.35,
+     "end": 9.47,
+     "text": " He",
+     "energy": 0.893
+    },
+    {
+     "start": 9.47,
+     "end": 9.57,
+     "text": " made",
+     "energy": 0.909
+    },
+    {
+     "start": 9.57,
+     "end": 9.71,
+     "text": " that",
+     "energy": 0.877
+    },
+    {
+     "start": 9.71,
+     "end": 9.97,
+     "text": " happen",
+     "energy": 0.794
+    }
+   ],
+   "kind": "portrait",
+   "t0": 309.5,
+   "t1": 319.5,
+   "editorial_rank": 3
+  },
+  {
+   "id": "M5",
+   "src": "india",
+   "src_path": "C:\\Users\\swastik\\AppData\\Local\\Temp\\opencode\\autoclip\\WkMr5zNqgwM_m7.mp4",
+   "emphasis": [
+    "MANCHUNA",
+    "NAME",
+    "HERE"
+   ],
+   "words": [
+    {
+     "start": 0.0,
+     "end": 0.22,
+     "text": " What's",
+     "energy": 0.82
+    },
+    {
+     "start": 0.22,
+     "end": 0.3,
+     "text": " your",
+     "energy": 0.926
+    },
+    {
+     "start": 0.3,
+     "end": 0.46,
+     "text": " name?",
+     "energy": 0.862
+    },
+    {
+     "start": 1.3,
+     "end": 1.58,
+     "text": " Manchuna.",
+     "energy": 0.781
+    },
+    {
+     "start": 2.38,
+     "end": 2.66,
+     "text": " Manchuna?",
+     "energy": 0.781
+    },
+    {
+     "start": 4.0,
+     "end": 4.02,
+     "text": " I",
+     "energy": 0.98
+    },
+    {
+     "start": 4.02,
+     "end": 4.2,
+     "text": " live",
+     "energy": 0.847
+    },
+    {
+     "start": 4.2,
+     "end": 4.42,
+     "text": " here,",
+     "energy": 0.82
+    },
+    {
+     "start": 4.44,
+     "end": 4.58,
+     "text": " man.",
+     "energy": 0.877
+    }
+   ],
+   "kind": "landscape",
+   "t0": 0.0,
+   "t1": 5.5,
+   "editorial_rank": 2
+  }
+ ]
+}

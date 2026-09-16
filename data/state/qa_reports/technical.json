@@ -1,0 +1,20 @@
+{
+ "gate": "technical",
+ "result": "PASS",
+ "errors": [],
+ "probe": {
+  "duration": 46.24,
+  "size_mb": 35.5,
+  "video": [
+   "h264",
+   1080,
+   1920,
+   30.0
+  ],
+  "audio": [
+   "aac",
+   2,
+   "48000"
+  ]
+ }
+}

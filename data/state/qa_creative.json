@@ -1,0 +1,106 @@
+{
+ "clips": [
+  {
+   "id": "M1",
+   "dur": 7.75,
+   "face_hits": 0.55,
+   "words": 19,
+   "max_pause": 0.78,
+   "speech": 7.8,
+   "score": 0.775,
+   "subscores": {
+    "comedy": 1.0,
+    "reaction_intensity": 1.0,
+    "creator_focus": 0.5,
+    "energy": 1.0,
+    "payoff": 0.0,
+    "standalone": 1.0,
+    "viral_signal": 0.0
+   }
+  },
+  {
+   "id": "M2",
+   "dur": 5.0,
+   "face_hits": 0.77,
+   "words": 7,
+   "max_pause": 0.16,
+   "speech": 1.8,
+   "score": 0.376,
+   "subscores": {
+    "comedy": 0.0,
+    "reaction_intensity": 0.5,
+    "creator_focus": 0.5,
+    "energy": 1.0,
+    "payoff": 0.005,
+    "standalone": 1.0,
+    "viral_signal": 0.0
+   }
+  },
+  {
+   "id": "M3",
+   "dur": 9.0,
+   "face_hits": 0.3,
+   "words": 24,
+   "max_pause": 0.66,
+   "speech": 7.4,
+   "score": 0.381,
+   "subscores": {
+    "comedy": 0.0,
+    "reaction_intensity": 0.5,
+    "creator_focus": 0.5,
+    "energy": 1.0,
+    "payoff": 0.06,
+    "standalone": 1.0,
+    "viral_signal": 0.0
+   }
+  },
+  {
+   "id": "M4",
+   "dur": 10.0,
+   "face_hits": 0.56,
+   "words": 28,
+   "max_pause": 0.12,
+   "speech": 9.6,
+   "score": 0.806,
+   "subscores": {
+    "comedy": 1.0,
+    "reaction_intensity": 1.0,
+    "creator_focus": 0.5,
+    "energy": 1.0,
+    "payoff": 0.314,
+    "standalone": 1.0,
+    "viral_signal": 0.0
+   }
+  },
+  {
+   "id": "M5",
+   "dur": 5.5,
+   "face_hits": 0.93,
+   "words": 9,
+   "max_pause": 1.34,
+   "speech": 4.6,
+   "score": 0.775,
+   "subscores": {
+    "comedy": 1.0,
+    "reaction_intensity": 1.0,
+    "creator_focus": 0.5,
+    "energy": 1.0,
+    "payoff": 0.0,
+    "standalone": 1.0,
+    "viral_signal": 0.0
+   }
+  }
+ ],
+ "creative": {
+  "ok": true,
+  "issues": [],
+  "notes": [
+   "M2: very few words, may not land caption-forward"
+  ],
+  "metrics": {
+   "total": 37.2,
+   "speech_density": 0.73
+  }
+ },
+ "ts": "2026-09-16T13:32:43"
+}
